@@ -43,7 +43,7 @@ export default class LetterBoard {
         const letterBoxOriginIndex = this.findLetterBoxOriginIndex(letterBox);
         this.letterContainers[letterBoxOriginIndex].setLetterBox(letterBox);
 
-        this.onInput(letterBox);
+        this.onInput();
     }
 
     onInput() {
