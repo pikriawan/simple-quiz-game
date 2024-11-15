@@ -10,6 +10,19 @@ export default class LetterBoard {
 
         this.letterContainers = [];
 
+        this.initializeLetterBoxes();
+    }
+
+    shuffleLetters(letters) {
+        for (let i = letters.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * i + 1);
+            [letters[i], letters[j]] = [letters[j], letters[i]];
+        }
+
+        return letters;
+    }
+
+    initializeLetterBoxes() {
         const shuffledAnswer = this.shuffleLetters(this.level.answer.split(""));
 
         for (let i = 0; i < this.level.answer.length; i++) {
@@ -20,15 +33,6 @@ export default class LetterBoard {
             this.$.append(letterContainer.$);
             this.letterContainers.push(letterContainer);
         }
-    }
-
-    shuffleLetters(letters) {
-        for (let i = letters.length - 1; i > 0; i--) {
-            let j = Math.floor(Math.random() * i + 1);
-            [letters[i], letters[j]] = [letters[j], letters[i]];
-        }
-
-        return letters;
     }
 
     findLetterBoxIndexById(id) {
